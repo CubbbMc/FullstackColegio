@@ -53,7 +53,7 @@ const contStudent = {
             });
         }
     },
-    readStudents: async(req, res)=>{
+    readAllStudents: async(req, res)=>{
         try {
             const allStudentFound = await modelAlumnos.find();
                 res.json({

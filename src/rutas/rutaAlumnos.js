@@ -5,6 +5,7 @@ import {uploadImage} from '../middlewares/resources.js';
 const studentRoutes = Router();
 studentRoutes.post('/', contStudent.createStudent);
 studentRoutes.get('/:id', contStudent.readStudent);
+studentRoutes.get('/', contStudent.readAllStudents);
 studentRoutes.put('/:id', uploadImage, contStudent.updateStudent);
 studentRoutes.delete('/:id', contStudent.deleteStudent);
 
