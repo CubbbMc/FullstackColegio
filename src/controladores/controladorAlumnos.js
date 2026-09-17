@@ -53,6 +53,20 @@ const contStudent = {
             });
         }
     },
+    readStudents: async(req, res)=>{
+        try {
+            const allStudentFound = await modelAlumnos.find();
+                res.json({
+                    mensaje:'Estudiantes encontrados satisfactoriamente',
+                    datos: allStudentFound,
+                });
+        } catch (error) {
+            res.json({
+               mensaje:'Ocurrio un error encontrando los estudiantes',
+                datos: error, 
+            });
+        }
+    },
     updateStudent: async (req, res) => {
         try {
             const fotoUpdate = await modelAlumnos.findById(
