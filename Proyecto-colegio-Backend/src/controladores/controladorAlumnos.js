@@ -37,6 +37,20 @@ const contStudent = {
                 });
         }
     },
+    readAllStudents: async(req, res)=>{
+        try {
+            const allStudentFound = await modelAlumnos.find();
+                res.json({
+                    mensaje:'Estudiantes encontrados satisfactoriamente',
+                    datos: allStudentFound,
+                });
+        } catch (error) {
+            res.json({
+               mensaje:'Ocurrio un error encontrando los estudiantes',
+                datos: error, 
+            });
+        }
+    },
     readStudent: async(req, res)=>{
         try {
             const studentFound = await modelAlumnos.findById(req.params.id);
@@ -49,20 +63,6 @@ const contStudent = {
         } catch (error) {
             res.json({
                mensaje:'Ocurrio un error encontrando el Estudiante',
-                datos: error, 
-            });
-        }
-    },
-    readAllStudents: async(req, res)=>{
-        try {
-            const allStudentFound = await modelAlumnos.find();
-                res.json({
-                    mensaje:'Estudiantes encontrados satisfactoriamente',
-                    datos: allStudentFound,
-                });
-        } catch (error) {
-            res.json({
-               mensaje:'Ocurrio un error encontrando los estudiantes',
                 datos: error, 
             });
         }
@@ -113,8 +113,7 @@ const contStudent = {
                 mensaje: 'Error al actualizar el estudiante',
                 datos: error,
             });
-            
-            
+                       
         }
     },
     deleteStudent: async(req, res) => {
