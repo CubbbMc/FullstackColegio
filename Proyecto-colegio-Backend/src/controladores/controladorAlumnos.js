@@ -106,8 +106,7 @@ const contStudent = {
                 mensaje: 'Estudiante actualizado',
                 datos: studentUpdate,
             });
-            console.log(nuevoModeloEstudiante);
-            console.log(studentUpdate);
+            
         } catch (error) {
             res.json({
                 mensaje: 'Error al actualizar el estudiante',
