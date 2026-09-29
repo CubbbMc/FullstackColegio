@@ -7,10 +7,10 @@ import { Home } from './componentes/home/home';
 
 
 export const routes: Routes = [ 
+    {path: 'home', title: 'Home', component: Home},
     {path:'maestros', title:'Maestros', component: Maestros},
     {path: 'alumnos', title:'Alumnos', component: Alumnos},
     {path: 'login', title: 'login', component: Login },
-    {path: '**', title: 'notFound', component: NotFound},
-    {path: 'home', title: 'Home', component: Home},
-    {path: '', redirectTo: 'home', pathMatch: 'full'}
+    {path: '', redirectTo: 'home', pathMatch: 'full'},
+    {path: '**', title: 'notFound', component: NotFound}
 ];
