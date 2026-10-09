@@ -4,9 +4,9 @@ import bcrypt from "bcryptjs";
 const controllerMaestros = {
 createMaestro: async (req, res) => {
 try{
-    const {nombre, materia, experiencia, correo, contraseña} = req.body;
+    const {nombre, materia, experiencia, correo, contraseña, rol} = req.body;
     const contraseñaProtegida = await bcrypt.hash (contraseña, 10);
-    const nuevoMaestro = new modelMaestros ({nombre, materia, experiencia, correo, contraseña:contraseñaProtegida });
+    const nuevoMaestro = new modelMaestros ({nombre, materia, experiencia, correo, contraseña:contraseñaProtegida, rol});
 
     const guardarMaestro = await nuevoMaestro.save();
     if(guardarMaestro._id){
