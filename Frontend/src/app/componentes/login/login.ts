@@ -35,8 +35,15 @@ handleSubmit() {
         console.log(credential);
         this.loginService.login(credential).subscribe((response: any) => {
           console.log("response:",response);
-          localStorage.setItem('token', response.datos);
+          if(response.mensaje && response.mensaje.includes('Bienvenido')){
+            //response.datos
+            localStorage.setItem('token', response.datos);
         this.router.navigateByUrl('/maestros');
+          } else{
+            console.log('No funciono')
+          }
+          //localStorage.setItem('token', response.datos);
+        //this.router.navigateByUrl('/maestros');
         })
       }
 
