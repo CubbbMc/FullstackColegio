@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import {Credential} from '../../interfaces/credential';
 import { ReactiveFormsModule, FormControl, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from '../../services/login-service';
+import { Router } from '@angular/router';
 
 @Component({
   imports: [ReactiveFormsModule],
@@ -11,6 +12,7 @@ import { LoginService } from '../../services/login-service';
 })
 
 export class Login {
+  router = inject(Router);
   loginService: LoginService = inject(LoginService);
   credentialsForm = new FormGroup({
     username: new FormControl('', Validators.required),
@@ -33,6 +35,8 @@ handleSubmit() {
         console.log(credential);
         this.loginService.login(credential).subscribe((response: any) => {
           console.log("response:",response);
+          localStorage.setItem('token', response.datos);
+        this.router.navigateByUrl('/maestros');
         })
       }
 
