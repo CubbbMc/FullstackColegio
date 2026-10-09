@@ -1,10 +1,12 @@
 import express from 'express';
+import cors from 'cors';
 import morgan from 'morgan';
 import rutaMaestros  from './rutas/rutaMaestro.js';
 import rutasLogin from './rutas/rutaLogin.js';
 import studentRoutes from './rutas/rutaAlumnos.js';
 
 const app = express();
+app.use(cors({origin:'http://localhost:4200'}));
 app.use(morgan('con'));
 app.use(express.json());
 app.use('/maestros', rutaMaestros);

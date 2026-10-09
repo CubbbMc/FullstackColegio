@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {Credential} from '../../interfaces/credential';
 import { ReactiveFormsModule, FormControl, FormGroup, Validators } from '@angular/forms';
+import { LoginService } from '../../services/login-service';
 
 @Component({
   imports: [ReactiveFormsModule],
@@ -10,9 +11,10 @@ import { ReactiveFormsModule, FormControl, FormGroup, Validators } from '@angula
 })
 
 export class Login {
+  loginService: LoginService = inject(LoginService);
   credentialsForm = new FormGroup({
     username: new FormControl('', Validators.required),
-    password: new FormControl('', Validators.required)
+    contraseña: new FormControl('', Validators.required)
   });
 
 handleSubmit() {
@@ -20,15 +22,18 @@ handleSubmit() {
   if(this.credentialsForm.valid) {
 
     const username = this.credentialsForm.value.username;
-    const password = this.credentialsForm.value.password;
+    const contraseña = this.credentialsForm.value.contraseña;
 
 
-      if(typeof username === 'string' && typeof password === 'string') {
+      if(typeof username === 'string' && typeof contraseña === 'string') {
         const credential: Credential = {
           username,
-          password,
+          contraseña,
         };
         console.log(credential);
+        this.loginService.login(credential).subscribe((response: any) => {
+          console.log("response:",response);
+        })
       }
 
   } else {
