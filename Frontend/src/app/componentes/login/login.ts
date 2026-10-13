@@ -38,7 +38,17 @@ handleSubmit() {
           if(response.mensaje && response.mensaje.includes('Bienvenido')){
             //response.datos
             localStorage.setItem('token', response.datos);
-        this.router.navigateByUrl('/maestros');
+            //decodificar token para el rol
+            const tokenDecode: any = this.loginService.decodeToken(response.datos)
+            console.log('token decodificado', tokenDecode);
+            if(tokenDecode.rol === 'admin'){
+        this.router.navigateByUrl('/adminPanel')}
+              else{
+                console.log('No ha funcionado', tokenDecode.rol)
+                
+                this.router.navigateByUrl('/maestros')
+
+              }
           } else{
             console.log('No funciono')
           }

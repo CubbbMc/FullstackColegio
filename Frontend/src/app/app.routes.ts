@@ -5,6 +5,7 @@ import { Login } from './componentes/login/login';
 import { NotFound } from './componentes/not-found/not-found';
 import { Home } from './componentes/home/home';
 import { Registro } from './componentes/registro/registro';
+import { Adminpanel } from './componentes/adminpanel/adminpanel';
 
 export const routes: Routes = [
     {path: 'home', title: 'Home', component: Home},
@@ -12,6 +13,7 @@ export const routes: Routes = [
     {path: 'alumnos', title: 'Alumnos', component: Alumnos},
     {path: 'login', title: 'Login', component: Login},
     {path: 'registro', title: 'Registro', component: Registro},
+    {path: 'adminPanel', title: 'Admin Panel', component: Adminpanel},
     {path: '', redirectTo: 'home', pathMatch: 'full'},
     {path: '**', title: 'NotFound', component: NotFound}
 ];
