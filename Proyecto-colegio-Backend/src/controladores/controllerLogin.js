@@ -16,7 +16,8 @@ const controllerLogin = {
                     id : maestrosFound._id,
                     nombre : maestrosFound.nombre, 
                     materia : maestrosFound.materia, 
-                    experiencia : maestrosFound.experiencia
+                    experiencia : maestrosFound.experiencia,
+                    rol : maestrosFound.rol
                     });
 
                 res.json({
