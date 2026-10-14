@@ -6,14 +6,15 @@ import { NotFound } from './componentes/not-found/not-found';
 import { Home } from './componentes/home/home';
 import { Registro } from './componentes/registro/registro';
 import { Adminpanel } from './componentes/adminpanel/adminpanel';
+import { autenticacionGuard } from './guards/autenticacion-guard';
 
 export const routes: Routes = [
     {path: 'home', title: 'Home', component: Home},
-    {path: 'maestros', title: 'Maestros', component: Maestros},
+    {path: 'maestros', title: 'Maestros', component: Maestros, canActivate:[autenticacionGuard]},
     {path: 'alumnos', title: 'Alumnos', component: Alumnos},
     {path: 'login', title: 'Login', component: Login},
     {path: 'registro', title: 'Registro', component: Registro},
-    {path: 'adminPanel', title: 'Admin Panel', component: Adminpanel},
+    {path: 'adminPanel', title: 'Admin Panel', component: Adminpanel, canActivate:[autenticacionGuard]},
     {path: '', redirectTo: 'home', pathMatch: 'full'},
     {path: '**', title: 'NotFound', component: NotFound}
 ];

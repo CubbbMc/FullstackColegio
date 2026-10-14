@@ -1,13 +1,13 @@
 import mongoose from "mongoose";
 
-
 mongoose
-    .connect(process.env.DATABASE)
-    .then(() => {
-        console.log("Conectado exitosamente a MongoDB Atlas");
-    })
-    .catch((error) => {
-        console.error("Error de conexion:", error.message);
-    });
+.connect(process.env.DATABASE)
+.then((data) =>{
 
+    console.log("Connected succesful to database");
+    
+}).catch((error) => {
 
+    console.log("Unable to connect to database!",error);
+
+});
